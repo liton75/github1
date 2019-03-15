@@ -1,0 +1,386 @@
+1.Selenium Automation practic:
+package bookings;
+
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+public class BookFlight {
+	@BeforeMethod
+	public void BeforeMethodTestcase1()
+	{
+		System.out.println("This code will be run before every testcase");
+	}
+	@AfterMethod
+	public void AfterMethodTestcase1()
+	{
+		System.out.println("This code will be run after every testcase");
+	}
+@Test
+public void BookFlight_RoundTrip_Testcase1()
+{
+	System.out.println("Testcase1");
+}
+@Test(dependsOnMethods={"BookFlight_RoundTrip_Testcase1"})
+public void BookFlight_RoundTrip_Testcase2()
+{
+	System.out.println("Testcase2");
+}
+@BeforeTest
+public void Beforetesttestcase1()
+{
+	System.out.println("This should be run first");
+}
+@Test
+public void BookFlight_OneWay_Testcase3()
+{
+	System.out.println("Testcase3");	
+}
+@AfterTest
+public void Aftertesttestcase1()
+{
+	System.out.println("This should be run last");
+}
+@Test(enabled=false)
+public void BookFlight_OneWay_Testcase4()
+{
+	System.out.println("Testcase4");
+}
+}	
+Result;
+[RemoteTestNG] detected TestNG version 6.8.2
+[TestNG] Running:
+  C:\Users\Shahjahan\AppData\Local\Temp\testng-eclipse--2015081593\testng-customsuite.xml
+
+This should be run first
+This code will be run before every testcase
+Testcase1
+This code will be run after every testcase
+This code will be run before every testcase
+Testcase3
+This code will be run after every testcase
+This code will be run before every testcase
+Testcase2
+This code will be run after every testcase
+This should be run last
+PASSED: BookFlight_RoundTrip_Testcase1
+PASSED: BookFlight_OneWay_Testcase3
+PASSED: BookFlight_RoundTrip_Testcase2
+
+===============================================
+    Default test
+    Tests run: 3, Failures: 0, Skips: 0
+===============================================
+
+
+===============================================
+Default suite
+Total tests run: 3, Failures: 0, Skips: 0
+===============================================
+
+[TestNG] Time taken by org.testng.reporters.JUnitReportReporter@5a39699c: 0 ms
+[TestNG] Time taken by org.testng.reporters.EmailableReporter2@7d417077: 16 ms
+[TestNG] Time taken by [FailedReporter passed=0 failed=0 skipped=0]: 0 ms
+[TestNG] Time taken by org.testng.reporters.XMLReporter@7e0babb1: 15 ms
+[TestNG] Time taken by org.testng.reporters.SuiteHTMLReporter@16c0663d: 63 ms
+[TestNG] Time taken by org.testng.reporters.jq.Main@ea4a92b: 52 ms
+
+2.Selenium Automation practic:
+package bookings;
+
+import org.testng.annotations.Test;
+public class BookFlight {
+@Test
+	public void BookFlight_RoundTrip_Testcase1()
+	{
+		System.out.println("BookFlight_RoundTrip_Testcase1");
+	}
+	@Test
+	public void BookFlight_RoundTrip_Testcase2()
+	{
+		System.out.println("BookFlight_RoundTrip_Testcase2");
+	}
+	@Test
+	public void BookFlight_OneWay_Testcase3()
+	{
+		System.out.println("BookFlight_OneWay_Testcase3");	
+	}
+	@Test
+	public void BookFlight_OneWay_Testcase4()
+	{
+		System.out.println("BookFlight_OneWay_Testcase4");	
+	}
+}
+Result:
+[RemoteTestNG] detected TestNG version 6.8.2
+[TestNG] Running:
+  C:\Users\Shahjahan\AppData\Local\Temp\testng-eclipse-2019215296\testng-customsuite.xml
+
+BookFlight_OneWay_Testcase3
+BookFlight_OneWay_Testcase4
+BookFlight_RoundTrip_Testcase1
+BookFlight_RoundTrip_Testcase2
+PASSED: BookFlight_OneWay_Testcase3
+PASSED: BookFlight_OneWay_Testcase4
+PASSED: BookFlight_RoundTrip_Testcase1
+PASSED: BookFlight_RoundTrip_Testcase2
+
+===============================================
+    Default test
+    Tests run: 4, Failures: 0, Skips: 0
+===============================================
+
+
+===============================================
+Default suite
+Total tests run: 4, Failures: 0, Skips: 0
+===============================================
+
+[TestNG] Time taken by org.testng.reporters.JUnitReportReporter@5a39699c: 47 ms
+[TestNG] Time taken by org.testng.reporters.EmailableReporter2@7d417077: 31 ms
+[TestNG] Time taken by [FailedReporter passed=0 failed=0 skipped=0]: 0 ms
+[TestNG] Time taken by org.testng.reporters.XMLReporter@7e0babb1: 31 ms
+[TestNG] Time taken by org.testng.reporters.SuiteHTMLReporter@16c0663d: 109 ms
+[TestNG] Time taken by org.testng.reporters.jq.Main@ea4a92b: 156 ms
+Parameterization:
+1st step:
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Booking_Functional">
+  <test name="Test">
+  <parameter name="URL" value="http://www.spicejet.com"></parameter>
+   <parameter name="Username" value="abcd"></parameter>   
+    <parameter name="Password" value="1234"></parameter>
+    <classes>
+    <class name="bookings.Pmt"></class>
+    </classes> 
+  </test> <!-- Test -->
+</suite> <!-- Booking_Functional -->
+2nd step:
+package bookings;
+
+import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
+
+
+public class Pmt {
+@Parameters({"URL","Username","Password"})
+@Test
+public void tc1(String url,String Uname,String pwd)
+{
+	System.out.println("My url is " +url);
+	System.out.println("My database username is " +Uname);
+	System.out.println("My database password is " +pwd);
+}
+}
+3.Regression Test:
+
+1st Step:
+<test name="Test">
+  <groups>
+  <run>
+  <include name="Regression"></include>
+  </run>
+  </groups>
+    <classes>
+      <class name="bookings.BookHolidayPackage"/>
+    
+     <class name="bookings.BookFlight">
+
+     </class>
+      <class name="bookings.BookHotel">
+      
+      </class>
+      <class name="bookings.FlightStatus"/>
+      
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Booking_Functional -->
+2nd step:
+package bookings;
+
+import org.testng.annotations.Test;
+
+public class BookHolidayPackage {
+
+@Test
+public void BookHolidayPackage_destination()
+{
+	System.out.println("BookHolidayPackage testcase1");
+}
+@Test
+public void BookHolidayPackage_departure()
+{
+	System.out.println("BookHolidayPackage testcase2");
+}
+@Test(groups={"Regression"})
+public void BookHolidayPackage_return()
+{
+	System.out.println("BookHolidayPackage testcase3");
+}
+}
+Result:
+[RemoteTestNG] detected TestNG version 6.8.2
+[TestNG] Running:
+  C:\Users\Shahjahan\eclipse-workspace\seleniumproject1\Regression.xml
+
+BookHolidayPackage testcase3
+BookFlight_OneWay_Testcase4
+
+===============================================
+Booking_Functional
+Total tests run: 2, Failures: 0, Skips: 0
+===============================================
+
+4.Smoked Test:
+1st step:
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Booking_Functional">
+  <test name="Test">
+   <packages>
+   <package name="bookings"></package>
+   <package name="onlineCheckIn"></package>
+   <package name="automation"></package>
+   </packages>
+  </test> <!-- Test -->
+</suite> <!-- Booking_Functional -->
+2nd step:
+package bookings;
+
+import org.testng.annotations.Test;
+
+public class BookHolidayPackage {
+
+@Test
+public void BookHolidayPackage_destination()
+{
+	System.out.println("BookHolidayPackage testcase1");
+}
+@Test
+public void BookHolidayPackage_departure()
+{
+	System.out.println("BookHolidayPackage testcase2");
+}
+@Test(groups={"Regression"})
+public void BookHolidayPackage_return()
+{
+	System.out.println("BookHolidayPackage testcase3");
+}
+}
+Result:
+[RemoteTestNG] detected TestNG version 6.8.2
+[TestNG] Running:
+  C:\Users\Shahjahan\eclipse-workspace\seleniumproject1\Regression.xml
+
+BookHolidayPackage testcase3
+BookFlight_OneWay_Testcase4
+
+===============================================
+Booking_Functional
+Total tests run: 2, Failures: 0, Skips: 0
+===============================================
+5.Listener
+1st step:
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Booking_Functional">
+<listeners>
+
+<listener class-name="bookings.Listenermain"></listener>
+</listeners>
+  <test name="Test">
+  
+    <classes>
+    <class name="bookings.ListenerClass1"></class>
+     <class name="bookings.ListenerClass2"></class>
+    </classes> 
+  </test> <!-- Test -->
+</suite> <!-- Booking_Functional -->
+2nd step:
+package bookings;
+
+import org.testng.ITestContext;
+import org.testng.ITestListener;
+import org.testng.ITestResult;
+
+//ITestlistener
+public class Listenermain implements ITestListener{
+
+	@Override
+	public void onFinish(ITestContext result) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onStart(ITestContext result) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onTestFailure(ITestResult result) {
+	System.out.println("My testcase failed" +result.getName()+result.getTestClass());
+		System.out.println("Error message for my testcase is" +result.getThrowable());
+	}
+
+	@Override
+	public void onTestSkipped(ITestResult result) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onTestStart(ITestResult result) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onTestSuccess(ITestResult result) {
+System.out.println("My testcase passed" +result.getName());
+		
+	}
+	
+
+}
+3rd step:
+package bookings;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+public class ListenerClass1 {
+@Test
+public void Class1_testcase1()
+{
+	Assert.assertEquals("Hi", "Hi");
+}
+@Test
+public void Class1_testcase2()
+{
+	Assert.assertEquals("Hi"," Hello");
+}
+}
+4th step:
+package bookings;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+public class ListenerClass2 {
+@Test
+public void Class2testcase()
+{
+	Assert.assertEquals("Ali", "Shahjahan");
+}
+}
